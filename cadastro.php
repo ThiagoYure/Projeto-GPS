@@ -22,20 +22,20 @@
 		<div class="container">
 			<div class="container">
         <div class="row">
-  				<form class="col s12">
+  				<form class="col s12" action="enviaCadastro.php" method="post">
   					<div class="row">
   						<div class="input-field col s6">
-  							<input id="first_name" type="text" class="validate">
+  							<input name="nome" id="first_name" type="text" class="validate">
   							<label for="first_name">Nome</label>
   						</div>
               <div class="input-field col s6">
-  							<input id="email" type="email" class="validate">
+  							<input name="email" id="email" type="email" class="validate">
   							<label for="email">Email</label>
   						</div>
   					</div>
   					<div class="row">
   						<div class="input-field col s12">
-  							<input id="password" type="password" class="validate">
+  							<input name="senha" id="password" type="password" class="validate">
   							<label for="password">Senha</label>
   						</div>
   					</div>
@@ -45,11 +45,11 @@
   							<input type="file" multiple id="arquivo">
   						</div>
   						<div class="file-path-wrapper">
-  							<input class="file-path validate" type="text" placeholder="Upload one or more files">
+  							<input name="foto" class="file-path validate" type="text" placeholder="Upload one or more files">
   						</div>
   					</div>
             <div class="input-field col s12">
-              <select>
+              <select name="cor">
                 <option value="Azul">Azul</option>
                 <option value="Rosa">Rosa</option>
               </select>
