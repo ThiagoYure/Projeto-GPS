@@ -91,7 +91,7 @@
           <div class="row">
             <div class="input-field col s6">
                 <label for="dataNascimento">Data de nascimento</label>
-                <input name="dataNascimento" id="dataNascimento" type="date" name="dataNascimento" class="datepicker">
+                <input name="dataNascimento" id="dataNascimento" type="text" name="dataNascimento" class="datepicker">
             </div>
             <div class="input-field col s6">
               <input id="usuario" type="text" name="" value="">
@@ -113,7 +113,8 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/plugin.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
   </body>
 </html>
