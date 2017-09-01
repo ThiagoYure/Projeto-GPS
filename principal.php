@@ -18,7 +18,7 @@
         <a href="#!name"><span class="white-text name">John Doe</span></a>
         <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
       </div></li>
-      <li><a href="#!"><i class="material-icons">edit</i>Cadastro de Criança</a></li>
+      <li><a class="modal-trigger" href="#modal1"><i class="material-icons">edit</i>Cadastro de Criança</a></li>
       <li><a href="#!"><i class="material-icons">settings</i>Configurações</a></li>
       <li><a href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
@@ -81,19 +81,21 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 <label for="dataNascimento">Data de nascimento</label>
                 <input name="dataNascimento" id="dataNascimento" type="date" name="dataNascimento" class="datepicker">
             </div>
+            <div class="input-field col s6">
+              <input id="usuario" type="text" name="" value="">
+              <label for="usuario">Adicionar e-mail de segundo usuário</label>
+            </div>
           </div>
-          <div class="input-field col s12">
-            <input id="usuario" type="text" name="" value="">
+          <div class="modal-footer">
+            <input class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="" value="Salvar">
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <input class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="" value="Salvar">
-      </div>
+
     </div>
 
 
