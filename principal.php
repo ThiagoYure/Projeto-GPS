@@ -28,7 +28,7 @@
       </div></li>
       <li><a class="modal-trigger" href="#modal1"><i class="material-icons">edit</i>Cadastro de Criança</a></li>
       <li><a href="#!"><i class="material-icons">settings</i>Configurações</a></li>
-      <li><a href="#!"><i class="material-icons">power_settings_new</i>Logout</a></li>
+      <li><a href="logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <div class="navbar-fixed">
       <nav>

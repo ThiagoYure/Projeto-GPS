@@ -11,6 +11,7 @@
 	</head>
 
 	<body class="blue lighten-5">
+
 		<!--Import jQuery before materialize.js-->
 		<div class="container">
 			<div class="container">
