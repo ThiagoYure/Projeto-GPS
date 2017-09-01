@@ -11,43 +11,46 @@
 	</head>
 	<body class="blue lighten-5">
 		<!--Import jQuery before materialize.js-->
-    <a href="index.php" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">arrow_back</i></a>
+
 		<div class="navbar-fixed">
 			<nav>
 				<div class="nav-wrapper blue lighten-3">
-					<a href="index.php" class="brand-logo">Cadastro</a>
+					<a href="index.php" class="brand-logo"><i class="material-icons">arrow_back</i>Cadastro</a>
 				</div>
 			</nav>
 		</div>
 		<div class="container">
 			<div class="container">
         <div class="row">
-  				<form class="col s12" action="enviaCadastro.php" method="post">
+  				<form class="col s12" action="enviaCadastro.php" method="post"  enctype="multipart/form-data">
   					<div class="row">
   						<div class="input-field col s6">
-  							<input name="nome" id="first_name" type="text" class="validate">
+  							<input name="nome" id="first_name" type="text" class="validate" required>
   							<label for="first_name">Nome</label>
   						</div>
               <div class="input-field col s6">
-  							<input name="email" id="email" type="email" class="validate">
+  							<input name="email" id="email" type="email" class="validate" required>
   							<label for="email">Email</label>
   						</div>
   					</div>
   					<div class="row">
   						<div class="input-field col s12">
-  							<input name="senha" id="password" type="password" class="validate">
+  							<input name="senha" id="password" type="password" class="validate" required>
   							<label for="password">Senha</label>
   						</div>
   					</div>
-            <div class="file-field input-field">
-  						<div class="btn">
-  							<span>Foto de perfil</span>
-  							<input type="file" multiple id="arquivo">
-  						</div>
-  						<div class="file-path-wrapper">
-  							<input name="foto" class="file-path validate" type="text" placeholder="Upload one or more files">
-  						</div>
-  					</div>
+						<div class="row">
+							<div class="file-field input-field col s12">
+					      <div class="btn">
+					        <span>Foto</span>
+					        <input name="foto" type="file">
+					      </div>
+					      <div class="file-path-wrapper">
+					        <input class="file-path validate" type="text">
+					      </div>
+					    </div>
+						</div>
+
             <div class="input-field col s12">
               <select name="cor">
                 <option value="Azul">Azul</option>
