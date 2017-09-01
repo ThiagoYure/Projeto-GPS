@@ -17,17 +17,19 @@
       $email = $_POST['email'];
       $senha = $_POST['senha'];
       $cor = $_POST['cor'];
-      $foto = "";
-      if(isset($_FILES['foto'])){
-        date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
-        $ext = strtolower(substr($_FILES['foto']['name'],-4)); //Pegando extensão do arquivo
-        $new_name = $email.$ext; //Definindo um novo nome para o arquivo
-        $dir = 'fotosperfil/'; //Diretório para uploads
-        move_uploaded_file($_FILES['foto']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
-        $foto = "fotosperfil/".$email."".$ext;
+
+      if($_FILES['foto']['name'] == ""){
+          $foto = "";
+      }else {
+        if(isset($_FILES['foto'])){
+          date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
+          $ext = strtolower(substr($_FILES['foto']['name'],-4)); //Pegando extensão do arquivo
+          $new_name = $email.$ext; //Definindo um novo nome para o arquivo
+          $dir = 'fotosperfil/'; //Diretório para uploads
+          move_uploaded_file($_FILES['foto']['tmp_name'], $dir.$new_name); //Fazer upload do arquivo
+          $foto = "fotosperfil/".$email."".$ext;
+        }
       }
-
-
       $sql = "INSERT INTO usuario (email, nome, senha, foto, cor)
       VALUES ('$email','$nome','$senha','$foto','$cor')";
 
