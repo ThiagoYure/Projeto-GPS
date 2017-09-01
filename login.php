@@ -5,6 +5,7 @@
     <link rel='stylesheet' type='text/css' href='sweetalert/dist/sweetalert.css'>
   </head>
   <body>
+
 	<?php
 		session_start();
 
@@ -33,8 +34,7 @@
 
 				}else{
 					$_SESSION['nome'] = $nome = $result[0]['nome'];
-          echo "<script>
-	        			setTimeout(function() { location.href='principal.php' }, 1000); </script>";
+          echo "<script>setTimeout(function() { location.href='principal.php' }, 500); </script>";
 
 				}
 			}else{
