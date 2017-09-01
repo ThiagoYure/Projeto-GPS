@@ -11,12 +11,20 @@
   </head>
 
   <body>
+    <?php include("bloqueiaAcessoDiretoURL.php");?>
     <ul id="slide-out" class="side-nav">
       <li><div class="user-view">
         <img class="background" src="img/paisagem.jpg" height="180px">
-        <a href="#!user"><img class="circle" src="img/iconPadrao.jpg" height="40px"></a>
-        <a href="#!name"><span class="white-text name">John Doe</span></a>
-        <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        <a href="#!user"><?php
+          if (empty($_SESSION['foto'])) {
+            echo "<img class='circle' src='img/iconPadrao.jpg'>";
+          }else {
+            $foto = $_SESSION['foto'];
+            echo "<img class='circle' src='".$foto."'>";
+          }
+         ?></a>
+        <a href="#!name"><span class="white-text name"><?php $nome = $_SESSION['nome']; echo "$nome"; ?></span></a>
+        <a href="#!email"><span class="white-text email"><?php $email = $_SESSION['email']; echo "$email"; ?></span></a>
       </div></li>
       <li><a class="modal-trigger" href="#modal1"><i class="material-icons">edit</i>Cadastro de Criança</a></li>
       <li><a href="#!"><i class="material-icons">settings</i>Configurações</a></li>
