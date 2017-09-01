@@ -7,7 +7,7 @@
 	//Parâmetros de entrada:
 	//-> Uma String do nome da tabela
 	//     -> Ex: "usuario" 
-	//-> Um objeto array (chave-valor) com os respectivos dados da tabela
+	//-> Um objeto array (chave-valor) com os respectivos dados da tabela do banco
 	//     -> Ex: Array com os dados para inserção
 	/*
 				$usuario = array(
@@ -33,14 +33,11 @@
        
 		//Executa o comando sql da variável $sql
         if($conexao->query($sql)){
-        	
 			//Fecha a conexão após a execução do sql
         	mysqli_close($conexao);
 			//Retorna true caso executado com sucesso o sql
 			return TRUE;	
-			
         }else{
-        	
 			//Fecha a conexão caso executado com insucesso o sql
         	mysqli_close($conexao);
 			//Retorna false em caso de insucesso do sql
@@ -59,7 +56,8 @@
 	//-> [OPCIONAL] - Uma String com nome dos campos que deseja projetar, 
 	//	 separados por vírgula. Caso nao seja passado, subtende-se que é passado o {*}
 	//     -> Ex: "nome, sexo"
-	//Retorno: retorna objeto(s) array dos párâmetros que satisfizeram a busca
+	//Retorno: retorna objeto(s) array dos párâmetros caso exista resultado e 
+	//false se o resultado da busca for vazio
 	//Acesso ao resultado:
 	//     -> [ATRIBUINDO À VARIAVEL O VALOR DA CONSULTA] 
 	//			-> $result = read_database("usuario", "WHERE email = 'rom@gmail.com'");
@@ -79,7 +77,7 @@
         $result = $conexao->query($sql);
 		
         if ($result->num_rows > 0) {
-      	// output data of each row
+      	// Saida de dados do each row
       		while($row = $result->fetch_assoc()) {
           		$data = $row;
 				$dataGeral[$i++] = $data;
@@ -106,6 +104,7 @@
 	//-> [OPCIONAL] - Uma String com a condição de alteração(sem o 'WHERE'). 
 	//   Caso não seja passado todos os usuarios serão alterados
 	//     -> Ex: "email = 'rom@gmail.com'"
+	//Retorno: true se atualizado e falso caso contrário
     function update_database($table, array $data, $where = ""){
         $conexao = open_database();
         
@@ -138,6 +137,7 @@
 	//-> [OPCIONAL] - Uma String com a condição de exclusão(sem o 'WHERE'). 
 	//   Caso não seja passado todos os usuarios serão excluídos
 	//     -> Ex: "email = 'rom@gmail.com'"
+	//Retorno: true se atualizado e falso caso contrário
 	function delete_database($table, $condition = null){
 		$conexao = open_database();
 		
