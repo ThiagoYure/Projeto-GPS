@@ -1,0 +1,72 @@
+CREATE TABLE usuario (
+	email VARCHAR(100) NOT NULL,
+	username VARCHAR(100) NOT NULL,
+	senha SERIAL,
+	url TEXT NOT NULL,
+	cor VARCHAR(10),
+	PRIMARY KEY (email)
+)ENGINE = InnoDB;
+CREATE TABLE bebe(
+	nickname VARCHAR(100) NOT NULL, 
+	nome VARCHAR(100) NOT NULL,
+	nascimento DATE NOT NULL,
+	sexo VARCHAR(10) NOT NULL,
+	url TEXT,
+	PRIMARY KEY(nickname)
+)ENGINE = InnoDB;
+CREATE TABLE album(
+	nicknameBebe VARCHAR(100) NOT NULL, 
+	nome VARCHAR(100) NOT NULL,
+	FOREIGN KEY(nicknameBebe) REFERENCES bebe(nickname) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(nicknameBebe,nome)
+)ENGINE = InnoDB;
+CREATE TABLE foto(
+	id SERIAL,
+	nicknameBebe VARCHAR(100), 
+	nomeAlbum VARCHAR(100),
+	url TEXT NOT NULL,
+	FOREIGN KEY(nicknameBebe) REFERENCES bebe(nickname) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY(nomeAlbum) REFERENCES album(nome) ON UPDATE CASCADE ON DELETE CASCADE,
+	PRIMARY KEY(id)
+)ENGINE = InnoDB;
+CREATE TABLE recado (
+	id SERIAL,
+	nicknameBebe VARCHAR (100),
+	data DATE NOT NULL,
+	hora TIME NOT NULL,
+	mensagem VARCHAR(500) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (nicknameBebe) REFERENCES bebe(nickname) ON DELETE CASCADE ON UPDATE CASCADE,
+)ENGINE = InnoDB;
+CREATE TABLE evento (
+	id SERIAL NOT NULL,
+	nicknameBebe VARCHAR(100),
+	data DATE NOT NULL,
+	descricao VARCHAR(200) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (nicknameBebe) REFERENCES bebe(nickname) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE = InnoDB;
+CREATE TABLE produto (
+	idProduto SERIAL NOT NULL,
+	nicknameBebe VARCHAR(100),
+	nomeProduto VARCHAR(200) NOT NULL,
+	quantidade INT,
+	PRIMARY KEY (idProduto)
+	FOREIGN KEY (nicknameBebe) REFERENCES bebe(nickname) ON DELETE CASCADE ON UPDADE CASCADE
+)ENGINE = InnoDB;
+CREATE TABLE albumTemFoto (
+	nicknameBebe VARCHAR(100),
+	nomeAlbum VARCHAR(100),
+	idFoto SERIAL,
+	PRIMARY KEY (nicknameBebe, nomeAlbum, idFoto),
+	FOREIGN KEY (nicknameBebe) REFERENCES bebe(nickname) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (nomeAlbum) REFERENCES album(nome) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (idFoto) REFERENCES foto(id) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE = InnoDB;
+CREATE TABLE usuarioTemBebe (
+	email VARCHAR(100),
+	nicknameBebe VARCHAR(100),
+	PRIMARY KEY (email, nicknameBebe),
+	FOREIGN KEY (email) REFERENCES usuario(email) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (nicknameBebe) REFERENCES bebe(nickname) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE = InnoDB;
