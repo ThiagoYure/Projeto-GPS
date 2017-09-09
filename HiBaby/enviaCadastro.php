@@ -9,6 +9,30 @@
   </body>
 </html>
 <?php
+    include("salvaFoto.php");
+    include("funcaoCadastro.php");
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $cor = $_POST['cor'];
+    $foto = fotoSalva($_FILES['foto'], $email);
+    if (cadastro($nome, $email, $senha, $cor, $foto)) {
+      echo "<script>
+      sweetAlert('Sucesso no cadastro', 'Usuário foi cadastrado com sucesso', 'success');
+      setTimeout(function() { location.href='index.php' }, 2000);
+          </script>";
+    }else {
+      echo "<script>
+      sweetAlert('Falha no cadastro', 'Não foi possível cadastrar', 'error');
+      setTimeout(function() { window.history.back(); }, 1000);
+          </script>";
+    }
+
+/*
+
+  Código antigo
+
+
     include("crudMySql.php");
 
     $conexao = open_database();
@@ -49,4 +73,6 @@
     }else{
       echo "<h1>Falha na conexão com o banco</h1>";
     }
+
+    */
 ?>

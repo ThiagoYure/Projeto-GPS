@@ -23,13 +23,13 @@
 						<form action="login.php" method="post">
 							<div class="row">
 								<div class="input-field col s12">
-									<input id="email" type="email" name="email" class="validate">
+									<input id="email" type="email" name="email" class="validate" required>
 									<label for="email">Email</label>
 								</div>
 							</div>
 							<div class="row">
 								<div class="input-field col s12">
-									<input id="password" type="password" name="senha" class="validate">
+									<input id="password" type="password" name="senha" class="validate" required>
 									<label for="password">Senha</label>
 								</div>
 							</div>
