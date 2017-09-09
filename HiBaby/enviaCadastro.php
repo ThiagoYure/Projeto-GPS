@@ -36,7 +36,7 @@
       if(mysqli_query($conexao, $sql)){
         echo "<script>
         sweetAlert('Sucesso no cadastro', 'Usuário foi cadastrado com sucesso', 'success');
-        setTimeout(function() { location.href='index.php' }, 1000);
+        setTimeout(function() { location.href='index.php' }, 3000);
             </script>";
       }else{
         echo "<script>

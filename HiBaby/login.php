@@ -21,14 +21,14 @@
 
 				$result = read_database('usuario', "WHERE email = '$email'");
 
-				$_SESSION['cor'] = $result[0]['cor'];
+				$_SESSION['cor'] = $result[0]['Cor'];
 
-				$_SESSION['foto'] = $result[0]['foto'];
+				$_SESSION['foto'] = $result[0]['Foto'];
 
-				if($result[0]['senha'] <> $senha){
+				if($result[0]['Senha'] <> $senha){
 					echo "<script>
 		        	sweetAlert('Senha incorreta', 'Digite novamente a senha', 'error');
-		        	setTimeout(function() { window.history.back(); }, 1000); </script>";
+		        	setTimeout(function() { window.history.back(); }, 5000); </script>";
 
 					session_unset();
 
