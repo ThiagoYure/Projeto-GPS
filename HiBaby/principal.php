@@ -5,7 +5,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+	<!-- Importa sweetAlert -->
+	<script type="text/javascript" src='sweetalert/dist/sweetalert.min.js'></script>
+    <link rel='stylesheet' type='text/css' href='sweetalert/dist/sweetalert.css'>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
@@ -57,12 +59,20 @@
               <!--Botão para acessar os dados da criança-->
               <div class="card-action">
                 <a href="#">Entrar</a>
+                
+                <button class="btn-floating btn-tiny red modal-trigger" href="" type="button" name="editChildreen">
+                	<i class="tiny material-icons">delete</i></button>
+                </button>
+                
+                <button class="btn-floating btn-tiny blue modal-trigger" href="#modal1EditBaby" value="1" type="button" name="deleteChildreen">
+                	<i class="tiny material-icons">mode_edit</i></button>
+                </button>
+                
               </div>
             </div>
           </div>
-
-
-
+          
+          
 
         </div>
       </div>
@@ -72,38 +82,44 @@
     <div id="modal1" class="modal">
       <div class="modal-content">
         <h4>Cadastro de criança</h4>
-        <form action="" method="post">
+        <form action="cadastroBebe" method="post" enctype="multipart/form-data">
           <div class="row">
             <div class="input-field col s6">
-              <input id="nomeCrianca" type="text" name="nomeCrianca" value="">
-              <label for="nomeCrianca">Nome da criança</label>
+              <input id="nomeBebe" type="text" name="nomeBebe">
+              <label for="nomeBebe">Nome da criança</label>
             </div>
-            <div class="file-field input-field col s6">
+            <div class="input-field col s6">
+              <input id="nicknameBebe" type="text" name="nicknameBebe">
+              <label for="nicknameBebe">Nickname da criança</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+                <label for="nascimentoBebe">Data de nascimento</label>
+                <input name="nascimentoBebe" id="nascimentoBebe" type="text" class="datepicker">
+            </div>
+            <div class="input-field col s6">
+                <select name="sexoBebe" required>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                </select>
+                <label>Sexo</label>
+              </div>
+          </div>
+          <div class="file-field input-field col s6">
               <div class="btn">
                 <span>Foto</span>
-                <input type="file">
+                <input type="file" name="fotoBebe">
               </div>
               <div class="file-path-wrapper">
-                <input  name="foto" class="file-path validate" type="text">
+                <input  name="fotoBebe" class="file-path validate" type="text">
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s6">
-                <label for="dataNascimento">Data de nascimento</label>
-                <input name="dataNascimento" id="dataNascimento" type="text" name="dataNascimento" class="datepicker">
-            </div>
-            <div class="input-field col s6">
-              <input id="usuario" type="text" name="" value="">
-              <label for="usuario">Adicionar e-mail de segundo usuário</label>
-            </div>
-          </div>
           <div class="modal-footer">
-            <input class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="" value="Salvar">
+            <input class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" value="Salvar">
           </div>
         </form>
       </div>
-
     </div>
 
 
@@ -115,6 +131,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/plugin.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-
+	
   </body>
 </html>
+
+	
