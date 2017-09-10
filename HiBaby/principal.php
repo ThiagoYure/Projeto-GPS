@@ -23,18 +23,18 @@
             echo "<img class='circle' src='".$foto."'>";
           }
          ?></a>
-        <a href="#!name"><span class="white-text name"><?php $nome = $_SESSION['nome']; echo "$nome"; ?></span></a>
-        <a href="#!email"><span class="white-text email"><?php $email = $_SESSION['email']; echo "$email"; ?></span></a>
+        <a href="configuracao.php"><span class="white-text name"><?php $nome = $_SESSION['nome']; echo "$nome"; ?></span></a>
+        <a href="configuracao.php"><span class="white-text email"><?php $email = $_SESSION['email']; echo "$email"; ?></span></a>
       </div></li>
       <li><a class="modal-trigger" href="#modal1"><i class="material-icons">edit</i>Cadastro de Criança</a></li>
-      <li><a href="#!"><i class="material-icons">settings</i>Configurações</a></li>
+      <li><a href="configuracao.php"><i class="material-icons">settings</i>Configurações</a></li>
       <li><a href="logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="#" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">HiBaby</a>
         </div>
       </nav>
     </div>
