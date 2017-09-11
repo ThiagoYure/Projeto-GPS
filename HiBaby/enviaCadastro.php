@@ -9,13 +9,13 @@
   </body>
 </html>
 <?php
-    include("salvaFoto.php");
+    include("uploadFile.php");
     include("funcaoCadastro.php");
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $cor = $_POST['cor'];
-    $foto = fotoSalva($_FILES['foto'], $email);
+    $foto = uploadPhoto($_FILES['foto'], 'Fotos_Usuarios/'.$email);
     if (cadastro($nome, $email, $senha, $cor, $foto)) {
       echo "<script>
       sweetAlert('Sucesso no cadastro', 'Usuário foi cadastrado com sucesso', 'success');
