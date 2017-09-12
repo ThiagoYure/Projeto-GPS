@@ -7,7 +7,11 @@ function alterarDadosBebe($nome,$nickname,$foto,$sexo,$nascimento,$nicknameBebe,
       $sql1 = "UPDATE bebe SET nome='$nome',nickname='$nickname',foto='$foto',sexo='$sexo',nascimento='$nascimento' WHERE nickname='$nicknameBebe'";
 
       if(mysqli_query($conexao, $sql1)){
-        return true;
+        if (mysqli_affected_rows($conexao)==0||mysqli_affected_rows($conexao)==-1) {
+          return false;
+        }else{
+          return true;
+        };
       }else{
         return false;
       }
@@ -23,7 +27,11 @@ function alterarDadosBebe($nome,$nickname,$foto,$sexo,$nascimento,$nicknameBebe,
           $sql3 = "UPDATE bebe SET nome='$nome',nickname='$nickname',foto='$foto',sexo='$sexo',nascimento='$nascimento' WHERE nickname='$nicknameBebe'";
 
           if(mysqli_query($conexao, $sql3)){
-            return true;
+            if (mysqli_affected_rows($conexao)==0||mysqli_affected_rows($conexao)==-1) {
+              return false;
+            }else{
+              return true;
+            };
           }else{
             return false;
           }

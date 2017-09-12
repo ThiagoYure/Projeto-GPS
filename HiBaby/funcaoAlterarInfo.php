@@ -7,7 +7,11 @@ function alterarDados($nome,$email,$foto,$cor,$senha,$emailAntigo){
       $sql1 = "UPDATE usuario SET email='$email',nome='$nome',foto='$foto',senha='$senha',cor='$cor' WHERE email='$emailAntigo'";
 
       if(mysqli_query($conexao, $sql1)){
-        return true;
+        if (mysqli_affected_rows($conexao)==0||mysqli_affected_rows($conexao)==-1) {
+          return false;
+        }else{
+          return true;
+        };
       }else{
         return false;
       }
@@ -23,7 +27,11 @@ function alterarDados($nome,$email,$foto,$cor,$senha,$emailAntigo){
           $sql3 = "UPDATE usuario SET email='$email',nome='$nome',foto='$foto',senha='$senha',cor='$cor' WHERE email='$emailAntigo'";
 
           if(mysqli_query($conexao, $sql3)){
-            return true;
+            if (mysqli_affected_rows($conexao)==0||mysqli_affected_rows($conexao)==-1) {
+              return false;
+            }else{
+              return true;
+            };
           }else{
             return false;
           }
