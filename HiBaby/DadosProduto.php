@@ -51,9 +51,9 @@
 			$result = mysqli_query($conexao, $sql);
 			if($result){
 				if(mysqli_num_rows($result)==0){
-					$resultado = true;
-				}else{
 					$resultado = false;
+				}else{
+					$resultado = true;
 				}
 			}else{
 				$resultado = false;
