@@ -1,10 +1,9 @@
 <?php
-function alterarDados($nome,$email,$foto,$cor,$senha,$emailAntigo){
-  include("conexao.php");
+function alterarDadosBebe($nome,$nickname,$foto,$sexo,$nascimento,$nicknameBebe,$emailUser){
   $conexao = open_database();
   if($conexao != null){
-    if ($email==$emailAntigo) {
-      $sql1 = "UPDATE usuario SET email='$email',nome='$nome',foto='$foto',senha='$senha',cor='$cor' WHERE email='$emailAntigo'";
+    if ($nickname==$nicknameBebe) {
+      $sql1 = "UPDATE bebe SET nome='$nome',nickname='$nickname',foto='$foto',sexo='$sexo',nascimento='$nascimento' WHERE nickname='$nicknameBebe'";
 
       if(mysqli_query($conexao, $sql1)){
         if (mysqli_affected_rows($conexao)==0||mysqli_affected_rows($conexao)==-1) {
@@ -17,14 +16,14 @@ function alterarDados($nome,$email,$foto,$cor,$senha,$emailAntigo){
       }
       mysqli_close($conexao);
     }else{
-      $sql2 = "SELECT * FROM usuario WHERE email='$email'"
+      $sql2 = "SELECT * FROM usuario_bebe WHERE email='$emailUser' AND nicknameBebe='$nickname'";
       if (mysqli_query($conexao,$sql2)) {
         $result = mysqli_query($conexao,$sql2);
         $numRows = mysqli_num_rows($result);
         if ($numRows>=1) {
           return false;
         }else{
-          $sql3 = "UPDATE usuario SET email='$email',nome='$nome',foto='$foto',senha='$senha',cor='$cor' WHERE email='$emailAntigo'";
+          $sql3 = "UPDATE bebe SET nome='$nome',nickname='$nickname',foto='$foto',sexo='$sexo',nascimento='$nascimento' WHERE nickname='$nicknameBebe'";
 
           if(mysqli_query($conexao, $sql3)){
             if (mysqli_affected_rows($conexao)==0||mysqli_affected_rows($conexao)==-1) {
@@ -40,7 +39,7 @@ function alterarDados($nome,$email,$foto,$cor,$senha,$emailAntigo){
       }else{
         return false;
       };
-    }
+    };   
   }else{
     return false;
   }

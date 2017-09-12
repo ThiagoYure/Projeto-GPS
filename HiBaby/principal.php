@@ -13,7 +13,16 @@
   </head>
 
   <body>
-    <?php include("bloqueiaAcessoDiretoURL.php");?>
+    <?php 
+      include("bloqueiaAcessoDiretoURL.php");
+      include("conexao.php");
+      $conexao = open_database();
+      $email = $_SESSION["email"];
+      $sql = "SELECT B.nickname,B.nome,B.sexo,B.foto,B.nascimento FROM bebe B,usuario_bebe UB WHERE UB.nicknamebebe=B.nickname AND UB.email='$email'";
+      if (mysqli_query($conexao, $sql)) {
+        $result = mysqli_query($conexao, $sql);
+      }
+    ?>
     <ul id="slide-out" class="side-nav">
       <li><div class="user-view">
         <img class="background" src="img/paisagem.jpg" height="180px">
@@ -42,38 +51,29 @@
     </div>
     <div class="contanier">
       <div class="container">
+        <div class="container">
 
-        <div class="row">
-
-
-
-          <!--Card do bebê-->
-          <div class="col s4">
-            <div class="card">
-              <div class="card-image">
-                <!--Foto da criança-->
-                <img src="img/baby.jpg">
-                <!--Nome da criança-->
-                <span class="card-title">Nome do bebê</span>
-              </div>
-              <!--Botão para acessar os dados da criança-->
-              <div class="card-action">
-                <a href="#">Entrar</a>
-                
-                <button class="btn-floating btn-tiny red modal-trigger" href="" type="button" name="editChildreen">
-                	<i class="tiny material-icons">delete</i></button>
-                </button>
-                
-                <button class="btn-floating btn-tiny blue modal-trigger" href="#modal1EditBaby" value="1" type="button" name="deleteChildreen">
-                	<i class="tiny material-icons">mode_edit</i></button>
-                </button>
-                
-              </div>
-            </div>
-          </div>
-          
-          
-
+			<?php 
+			  while($exibe = mysqli_fetch_assoc($result)){
+				echo 
+				"<div class='row'>
+				  <div class='card' id='".$exibe['nickname']."'>
+					<div class='card-image'>
+					  <!--Foto da criança-->
+					  <img src='".$exibe['foto']."' style='width:100%;height:300px'>
+					  <!--Nome da criança-->
+					  <span class='card-title'>".$exibe['nome']."</span>
+					</div>
+					<div class='card-action'>
+					  <a href='paginaBebe.php?nickname=".$exibe['nickname']."'>Entrar</a>
+					  <a class='btn-floating btn-tiny red' href='deletarBebe.php?nickname=".$exibe['nickname']."'><i class='tiny material-icons'>delete</i></a>
+					  <a class='btn-floating btn-tiny blue' href='editarBebe.php?nickname=".$exibe['nickname']."'><i class='tiny material-icons'>mode_edit</i></a>
+					</div>
+				  </div>
+				</div>";
+			  }
+			?>
+			
         </div>
       </div>
     </div>
@@ -124,7 +124,7 @@
 
 
     <div class="fixed-action-btn">
-      <button class="btn-floating btn-large red modal-trigger" href="#modal1" type="button" name="button"><i class="large material-icons">mode_edit</i></button>
+      <button class="btn-floating btn-large red modal-trigger" href="#modal1" type="button" name="button"><i class="large material-icons">add</i></button>
     </div>
 
     <!--Import jQuery before materialize.js-->

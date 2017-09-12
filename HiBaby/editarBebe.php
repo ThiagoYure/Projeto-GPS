@@ -15,38 +15,33 @@
   <body>
     <?php 
       include("bloqueiaAcessoDiretoURL.php");
+      include("conexao.php");
       include("uploadFile.php");
-      include("funcaoAlterarInfo.php");
-      $email = $_SESSION['email'];
-      $nome = $_SESSION['nome'];
-      $senha = $_SESSION['senha'];
-      $foto = $_SESSION['foto'];
+      include("funcaoAlterInfoBebe.php");
+      $conexao = open_database();
+      $emailUser = $_SESSION["email"];
+      $nicknameBebe = $_GET["nickname"];
+      $sqli = "SELECT * FROM bebe B,usuario_bebe UB WHERE UB.nicknameBebe=B.nickname AND UB.email='$emailUser' AND B.nickname='$nicknameBebe'";
+      $resultado=mysqli_query($conexao,$sqli);
       if ($_POST) {
-        $email1 = $_POST['email'];
-        $foto1 = uploadPhoto($_FILES['foto'], 'Fotos_Usuarios/'.$email1);
-        $nome1 = $_POST['nome'];
-        $senha1 = $_POST['senha'];
-        $cor = $_POST['cor'];
-        if ($email1==""||$foto1==""||$nome1==""||$senha1==""||$cor=="") {
+        $nomeBebe = $_POST['nomeBebe'];
+        $nicknameBebe1 = $_POST['nicknameBebe'];
+        $fotoBebe = uploadPhoto($_FILES['fotoBebe'], 'BabyPhotos/'.$nicknameBebe1);
+        $sexoBebe = $_POST['sexoBebe'];
+        $nascimentoBebe = $_POST['nascimentoBebe'];
+        if ($nomeBebe==""||$fotoBebe==""||$sexoBebe==""||$nascimentoBebe==""||$nicknameBebe1=="") {
           echo "<script>
       sweetAlert('Campos Vazios', 'Preencha os campos vazios...', 'error');
           </script>";
         }else{
-          if (alterarDados($nome1,$email1,$foto1,$cor,$senha1,$email)) {
-            session_destroy();
-            session_start();
-            $_SESSION['email'] = $email1;
-            $_SESSION['foto'] = $foto1;
-            $_SESSION['cor'] = $cor;
-            $_SESSION['nome'] = $nome1;
-            $_SESSION['senha'] = $senha1;
+          if (alterarDadosBebe($nomeBebe,$nicknameBebe1,$fotoBebe,$sexoBebe,$nascimentoBebe,$nicknameBebe,$emailUser)) {
             echo "<script>
-      sweetAlert('Sucesso na alteração de dados do usuario', 'Alteração feita com sucesso!', 'success');
+      sweetAlert('Sucesso na alteração de dados do bebê', 'Alteração feita com sucesso!', 'success');
       setTimeout(function() { location.href='principal.php' }, 2000);
           </script>";
           }else{
             echo "<script>
-      sweetAlert('Falha na alteração de dados', 'Falha ao alterar dados do usuário...', 'error');
+      sweetAlert('Falha na alteração de dados', 'Falha ao alterar dados do bebê...', 'error');
           </script>";
           }
         }
@@ -81,41 +76,55 @@
     <div class="contanier">
     </br>
       <div class="row">
-          <form class="col s12" action="configuracao.php" method="post"  enctype="multipart/form-data">
+      <?php
+        $resultado1 = mysqli_fetch_assoc($resultado);
+      ?>
+          <form class="col s12" action="editarBebe.php?nickname=<?php echo $nicknameBebe ?>" method="post"  enctype="multipart/form-data">
             <div class="row">
               <div class="input-field col s6">
-                <input name="nome" id="first_name" value="<?php echo "$nome" ?>" type="text" class="validate" required>
-                <label for="first_name">Nome</label>
+                <input name="nomeBebe" id="nomeBebe" value="<?php echo $resultado1['Nome'] ?>" type="text" class="validate" required>
+                <label for="first_name">Nome do Bebê</label>
               </div>
               <div class="input-field col s6">
-                <input name="email" id="email" type="email" value="<?php echo "$email" ?>" class="validate" required>
-                <label for="email">Email</label>
+                <input name="nicknameBebe" id="nickname" type="text" value="<?php echo $resultado1['Nickname'] ?>" class="validate" required>
+                <label for="nickname">Nickname do Bebê</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
-                <input name="senha" id="password" type="password" value="<?php echo "$senha" ?>" class="validate" required>
-                <label for="password">Senha</label>
+              <div class="input-field col s6">
+                <label for="nascimentoBebe">Data de nascimento</label>
+                <input name="nascimentoBebe" id="nascimentoBebe" type="text" value="<?php echo $resultado1['Nascimento'] ?>" class="datepicker">
               </div>
+              <?php 
+                if ($resultado1["Sexo"]=="Masculino") {
+                  echo '<div class="input-field col s6">
+                   <select name="sexoBebe" required>
+                      <option value="Masculino" selected>Masculino</option>
+                      <option value="Feminino">Feminino</option>
+                    </select>
+                    <label>Sexo</label>
+                  </div>';
+                }else{
+                  echo '<div class="input-field col s6">
+                   <select name="sexoBebe" required>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Feminino" selected>Feminino</option>
+                    </select>
+                    <label>Sexo</label>
+                  </div>';
+                }
+              ?>
             </div>
             <div class="row">
               <div class="file-field input-field col s12">
                 <div class="btn">
                   <span>Foto</span>
-                  <input name="foto" type="file">
+                  <input type="file" name="fotoBebe">
                 </div>
                 <div class="file-path-wrapper">
-                  <input class="file-path validate" value="<?php echo "$foto" ?>" type="text">
+                  <input  name="fotoBebe" class="file-path validate" value="<?php echo $resultado1['Foto'] ?>" type="text">
                 </div>
               </div>
-            </div>
-
-            <div class="input-field col s12">
-              <select name="cor">
-                <option value="Azul">Azul</option>
-                <option value="Rosa">Rosa</option>
-              </select>
-              <label>Cor</label>
             </div>
             <div class="fixed-action-btn">
               <input class="btn green"  id="btSalvar" type="submit" name="" value="Salvar">
