@@ -18,8 +18,22 @@
 	$quantidadebebe = buscarquantidade($idbebe);
 	
 		$quantidadefinal = $quantidadebebe - $quantidade;
-	
-	if($quantidadefinal > 0){
+	if($quantidadefinal == 0){
+		$ok = updatequantidade($quantidadefinal, $idbebe);
+		if($ok){
+			echo "<script>
+				sweetAlert('Sucesso', 'Quantiade do produto foi alterado com sucesso, Mas esta zerada', 'success');
+				setTimeout(function() { window.history.back(); }, 4000);
+				</script>";
+		}else{
+			echo "<script>
+			sweetAlert('Falha', 'Não foi possível mudar a quantidade', 'error');
+			setTimeout(function() { window.history.back(); }, 1000);
+			</script>";
+		}
+		
+		
+	}else if($quantidadefinal > 0){
 		$ok = updatequantidade($quantidadefinal, $idbebe);
 		if($ok){
 			echo "<script>

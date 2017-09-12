@@ -18,6 +18,9 @@
 		}
 	}
 ?>
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -60,7 +63,6 @@
 		<div class="container">
 			<?php
 				include("conexao.php");
-				session_start();
 				$bebe = $_REQUEST['nickBebe'];
 				
 				$result = buscaEstoque($bebe);
