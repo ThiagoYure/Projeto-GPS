@@ -42,13 +42,11 @@ $nickBebe = $_REQUEST['nickBebe'];
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="principal.php" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">Home</a>
         </div>
       </nav>
     </div>
 
-<<<<<<< HEAD
-=======
     <!-- Formulário de inscrição -->
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -78,41 +76,28 @@ $nickBebe = $_REQUEST['nickBebe'];
       </div>
     </div>
 
-
->>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
-
     <?php
           $conn = mysqli_connect('localhost', 'root', '', 'hibaby');
 
           $des = $_POST['Descricao'];
           $aviso = $_POST['Aviso'];
-<<<<<<< HEAD
 
           $sql ="INSERT INTO recado (NicknameBebe, Data, Hora, Descricao, Aviso) values ('$nickBebe', CURRENT_DATE(),CURRENT_TIME(), '$des', '$aviso')";
-          $result = mysqli_query( $conn, $sql);
-          if($result)
-=======
-          $data = $_POST['Data'];
-
-          $sql ="INSERT INTO recado (NicknameBebe, Data, Hora, Descricao, Aviso) values ('$nickBebe', '$data', 'NOW()', '$des', '$aviso')";
-          $result = mysqli_query( $conn, $sql);
-          if(!$result)
->>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
-            echo "<script>
+          if(mysqli_query($conn, $sql)){
+				echo "<script>
           sweetAlert('Cadastro', 'O aviso foi salvo com sucesso', 'success');
-          setTimeout(function() { location.href='principal.php' }, 3000);
-            </script>";
-          else
-          {                              
-            echo "<script>
-          sweetAlert('Cadastro mal sucedido', 'Check as informações e tente novamente', 'error');
-          setTimeout(function() { location.href='principal.php' }, 3000);
-           </script>";
-
-          }
+          setTimeout(function() { location.href='avisos.php?nickBebe=$nickBebe' }, 2000);
+            </script>"; 
+			  
+		  }else{
+				echo "<script>
+			  sweetAlert('Cadastro mal sucedido', 'Check as informações e tente novamente', 'error');
+			  setTimeout(function() { location.href='avisos.php?nickBebe=$nickBebe' }, 2000);
+			   </script>";
+		  }
 
           mysqli_close($conn);                            
-          ?>      
+    ?>      
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

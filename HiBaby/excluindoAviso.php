@@ -2,6 +2,7 @@
 include("crudMySql.php");
 session_start();
 $id = $_GET['id'];
+$nickBebe = $_GET['nickBebe'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,7 +43,7 @@ $id = $_GET['id'];
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="principal.php" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">Home</a>
         </div>
       </nav>
     </div>
@@ -54,21 +55,18 @@ $id = $_GET['id'];
     $result = mysqli_query( $conn, $sql);
 
     // Verifica se o comando foi executado com sucesso
-<<<<<<< HEAD
+
     if($result){
-=======
-    if(!$result){
->>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
       echo "<script>
       sweetAlert('Sucesso', 'Aviso excluido com sucesso', 'success');
-      setTimeout(function() { location.href='principal.php' }, 3000);
+      setTimeout(function() { location.href='avisos.php?nickBebe=$nickBebe'; }, 2000);
     </script>";
-  }else{
-    echo "<script>
-    sweetAlert('Erro', 'Não foi possivel excluir', 'error');
-    setTimeout(function() { location.href='principal.php' }, 3000);
-  </script>";
-} 
+	  }else{
+		echo "<script>
+		sweetAlert('Erro', 'Não foi possivel excluir', 'error');
+		setTimeout(function() { location.href='avisos.php?nickBebe=$nickBebe'; }, 2000);
+	  </script>";
+	} 
 
 mysqli_close($conn);                              
 ?> 

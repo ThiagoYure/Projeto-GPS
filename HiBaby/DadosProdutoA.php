@@ -14,7 +14,7 @@
 	session_start();
 		
 	$idbebe = $_GET['id'];
-	
+	$bebe = $_GET['nickBebe'];
 	$quantidadebebe = buscarquantidade($idbebe);
 	
 	$quantidadefinal = $quantidade + $quantidadebebe;
@@ -23,19 +23,19 @@
 		$ok = updatequantidade($quantidadefinal, $idbebe);
 		if($ok){
 			echo "<script>
-				sweetAlert('Sucesso', 'Quantiade do produto foi alterado com sucesso', 'success');
-				setTimeout(function() { window.history.back(); }, 2000);
+				sweetAlert('Sucesso', 'Quantidade do produto foi alterado com sucesso', 'success');
+				setTimeout(function() { location.href ='estoque.php?nickBebe=$bebe'; }, 2000);
 				</script>";
 		}else{
 			echo "<script>
 			sweetAlert('Falha', 'Não foi possível mudar a quantidade', 'error');
-			setTimeout(function() { window.history.back(); }, 1000);
+			setTimeout(function() { location.href ='estoque.php?nickBebe=$bebe'; }, 1000);
 			</script>";
 		}
 	}else{
 		echo "<script>
 			sweetAlert('Falha', 'Quantidade negativa', 'error');
-			setTimeout(function() { window.history.back(); }, 1000);
+			setTimeout(function() { location.href ='estoque.php?nickBebe=$bebe'; }, 1000);
 			</script>";
 	}
 	

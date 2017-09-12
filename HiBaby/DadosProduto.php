@@ -20,24 +20,24 @@
 	if($quantidade == "" || $nome == ""){
 		echo "<script>
       sweetAlert('Falha no cadastro', 'Dados vazios', 'error');
-      setTimeout(function() { window.history.back(); }, 1000);
+      setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 1000);
           </script>";
 	}else if($existe == false){
 		echo "<script>
       sweetAlert('Falha no cadastro', 'Não foi possível cadastrar ja existe esse produto', 'error');
-      setTimeout(function() { window.history.back(); }, 1000);
+      setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 1000);
           </script>";
 	}else{ 
 		$ok = cadastroproduto($nome, $quantidade, $usuariobebe);
 		if ($ok) {
 			echo "<script>
 				sweetAlert('Sucesso no cadastro', 'Produto foi cadastrado com sucesso', 'success');
-				setTimeout(function() { window.history.back(); }, 2000);
+				setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 2000);
 				</script>";
 		}else {
 			echo "<script>
 				sweetAlert('Falha no cadastro', 'Não foi possível cadastrar', 'error');
-				setTimeout(function() { window.history.back(); }, 1000);
+				setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 1000);
 				</script>";
 		}
 	}

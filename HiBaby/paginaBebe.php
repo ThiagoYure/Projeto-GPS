@@ -41,11 +41,14 @@
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="principal.php" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">Home</a>
         </div>
       </nav>
     </div>
     <div class="container">
+		<div class="row">
+			<center><h3>Página de <?php echo $nickBebe?></h3></center>
+		</div>
 		
       <div class="collection">
         <a href="albuns.php?nickBebe=<?php echo $nickBebe?>" class="collection-item"><h4>Álbuns</h4></a>

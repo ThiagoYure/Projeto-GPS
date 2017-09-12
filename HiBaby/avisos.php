@@ -42,7 +42,7 @@ $nickBebe = $_REQUEST['nickBebe'];
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="principal.php" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">Home</a>
         </div>
       </nav>
     </div>
@@ -53,26 +53,19 @@ $nickBebe = $_REQUEST['nickBebe'];
         <h4>Cadastro de avisos</h4>
         <form action="salvandoAviso.php?nickBebe=<?php echo $nickBebe?>" method="post" enctype="multipart/form-data">
           <div class="row">
-            <div class="input-field col s6">
-              <input id="nomeBebe" type="text" name="Descricao">
-              <label for="Descricao">Descricao</label>
+            <div class="input-field col s12">
+			<input placeholder="Aviso" name="Aviso" id="aviso" type="text" class="validate">
+          	<label for="aviso">Aviso</label>
+             
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s6">
-              <textarea for="aviso" name="Aviso"></textarea>
-              <label for="Aviso">Aviso</label>
-            </div>
-          </div>
-<<<<<<< HEAD
-=======
-          <div class="row">
-            <div class="input-field col s6">
-              <label for="data">Data</label>
-              <input name="Data" id="data" type="text" class="datepicker">
-            </div>
-          </div>
->>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
+		<div class="row">
+        <div class="input-field col s12">
+          <textarea id="descricao" name="Descricao" class="materialize-textarea"></textarea>
+          <label for="descricao">Descrição</label>
+        </div>
+      </div>
+          
           <div class="modal-footer">
             <input class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" value="Salvar">
           </div>
@@ -85,6 +78,14 @@ $nickBebe = $_REQUEST['nickBebe'];
     <div class="fixed-action-btn">
       <button class="btn-floating btn-large red modal-trigger" href="#modal1" type="button" name="button"><i class="large material-icons">add</i></button>
     </div>
+	<div class="container">
+		<div class="row">
+	</div>
+	<div class="row">
+		<a href="paginaBebe.php?nickname=<?php echo $_REQUEST['nickBebe'] ?>" class="waves-effect waves-light btn-large blue">Voltar para página de <?php echo $_REQUEST['nickBebe'] ?></a>
+	</div>	
+		
+	
     
     <?php
     $conn = mysqli_connect('localhost', 'root', '', 'hibaby');
@@ -94,19 +95,19 @@ $nickBebe = $_REQUEST['nickBebe'];
       while ($aviso = $avisos->fetch_assoc()){
         ?> 
 
-        <div class="container">
-
+        
+			
           <div class="collection"> 
             <p align="left"><?php echo $aviso['Data']; ?></p>
             <p align="left"><?php echo $aviso['Hora']; ?></p>
-            <h4 align="center"><?php echo $aviso['Descricao']; ?></h4>
-            <p align="center"><?php echo $aviso['Aviso']; ?></p>
+            <h4 align="center"><?php echo $aviso['Aviso']; ?></h4>
+            <p align="center"><?php echo $aviso['Descricao']; ?></p>
             <div align="right">
-             <a class='btn-floating btn-tiny red' href='excluindoAviso.php?id=<?=$aviso['ID']?>'><i class='tiny material-icons'>delete</i></a>  
+             <a class='btn-floating btn-tiny red' href='excluindoAviso.php?nickBebe=<?php echo $nickBebe ?>&id=<?=$aviso['ID']?>'><i class='tiny material-icons'>delete</i></a>  
            </div>
          </div>
 
-       </div>
+       
 
        <?php         
      }
@@ -117,7 +118,7 @@ $nickBebe = $_REQUEST['nickBebe'];
   }
 
   ?>
-
+</div>
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/plugin.js"></script>

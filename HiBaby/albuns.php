@@ -56,7 +56,7 @@
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="principal.php" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">Home</a>
         </div>
       </nav>
     </div>
@@ -66,6 +66,12 @@
           </a>
       </div>
       <div class="container">
+		  <div class="row">
+			</div>
+			<div class="row">
+				<a href="paginaBebe.php?nickname=<?php echo $_REQUEST['nickBebe'] ?>" class="waves-effect waves-light btn-large blue">Voltar para página de <?php echo $_REQUEST['nickBebe'] ?></a>
+			</div>
+		  
 		 <div class="row">
 			 <h4>Álbuns de <?php echo $bebe ?></h4>
 			<?php

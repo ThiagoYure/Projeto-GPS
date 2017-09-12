@@ -56,11 +56,17 @@
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="principal.php" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">Home</a>
         </div>
       </nav>
     </div>
 		<div class="container">
+			<div class="row">
+			</div>
+			<div class="row">
+				<a href="paginaBebe.php?nickname=<?php echo $_REQUEST['nickBebe'] ?>" class="waves-effect waves-light btn-large blue">Voltar para página de <?php echo $_REQUEST['nickBebe'] ?></a>
+				<h3>Estoque de <?php echo $_REQUEST['nickBebe'] ?></h3>
+			</div>
 			<?php
 				include("conexao.php");
 				$bebe = $_REQUEST['nickBebe'];
@@ -78,13 +84,13 @@
 									<i class="material-icons circle">folder</i>
 									<span class="title">'.$result[$i]['nome'].'</span>
 									<p>'.$result[$i]['quantidade'].'</p>
-									<a class="btn-floating red" href="produtoacrecimo.php?id='.$result[$i]['ID'].'">
+									<a class="btn-floating red" href="produtoacrecimo.php?id='.$result[$i]['ID'].'&nickBebe='.$_GET['nickBebe'].'">
 										<i class="large material-icons">add</i>
 									</a>
-									<a class="btn-floating red" href="produtodiminuir.php?id='.$result[$i]['ID'].'">
+									<a class="btn-floating red" href="produtodiminuir.php?id='.$result[$i]['ID'].'&nickBebe='.$_GET['nickBebe'].'">
 										<i class="large material-icons">remove</i>
 									</a>
-									<a class="btn-floating red" href="excluindoProduto.php?id='.$result[$i]['ID'].'">
+									<a class="btn-floating red" href="excluindoProduto.php?id='.$result[$i]['ID'].'&nickBebe='.$_GET['nickBebe'].'">
 										<i class="large material-icons">delete_forever</i>
 									</a>
 								</li>

@@ -2,6 +2,7 @@
 include("crudMySql.php");
 session_start();
 $id = $_GET['id'];
+$bebe = $_GET['nickBebe'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,12 +21,12 @@ $id = $_GET['id'];
     if($result){
       echo "<script>
       sweetAlert('Sucesso', 'Produto excluido com sucesso', 'success');
-      setTimeout(function() { window.history.back(); }, 1000);
+      setTimeout(function() { location.href ='estoque.php?nickBebe=$bebe'; }, 1000);
           </script>";
 	}else{
 		echo "<script>
       sweetAlert('Erro', 'Não foi possivel excluir', 'error');
-      setTimeout(function() { window.history.back(); }, 1000);
+      setTimeout(function() { location.href ='estoque.php?nickBebe=$bebe'; }, 1000);
           </script>";
 	} 
 	mysqli_close($conn);

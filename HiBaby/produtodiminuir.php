@@ -2,6 +2,7 @@
 include("crudMySql.php");
 session_start();
 $id = $_GET['id'];
+$bebe = $_GET['nickBebe'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@ $id = $_GET['id'];
 
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+		
 	</head>
 	<body>
 		<ul id="slide-out" class="side-nav">
@@ -38,13 +39,22 @@ $id = $_GET['id'];
       <nav>
         <div class="nav-wrapper blue lighten-3">
           <a data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-          <a href="principal.php" class="brand-logo">HiBaby</a>
+          <a href="principal.php" class="brand-logo">Home</a>
         </div>
       </nav>
     </div>
       <div class="container">
+		  <div class="row">
+				
+			</div>
+			<div class="row">
+			 <a href="estoque.php?nickBebe=<?php echo $bebe ?>" class="waves-effect waves-light btn-large blue">	
+			 	<i class="material-icons left">arrow_back</i>
+				 Voltar para estoque
+			 </a>
+			</div>
         <br>
-		<form action="DadosProdutoD.php?id=<?=$id?>" method="post" >
+		<form action="DadosProdutoD.php?id=<?=$id?>&nickBebe=<?php echo $bebe ?>" method="post" >
         <div class="row">
           <div class="input-field col s12">
             <input id="last_name" type="text" class="validate" name="quantidade">
