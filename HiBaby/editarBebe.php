@@ -19,19 +19,10 @@
       include("uploadFile.php");
       include("funcaoAlterInfoBebe.php");
       $conexao = open_database();
+      $emailUser = $_SESSION["email"];
       $nicknameBebe = $_GET["nickname"];
-      if (isset($nicknameBebe)) {
-        echo "$nicknameBebe";
-        $sql = "SELECT * FROM bebe WHERE nickname='Linda'";
-        $result = mysqli_query($conexao, $sql);
-        while ($exibe = mysqli_fetch_assoc($result)) {
-          $nome = $exibe['nome'];
-          echo '$nome';
-          $nickname = $exibe['nickname'];
-          $foto = $exibe['foto'];
-          $nascimento = $exibe['nascimento'];
-        };
-      };
+      $sqli = "SELECT * FROM bebe B,usuario_bebe UB WHERE UB.nicknameBebe=B.nickname AND UB.email='$emailUser' AND B.nickname='$nicknameBebe'";
+      $resultado=mysqli_query($conexao,$sqli);
       if ($_POST) {
         $nomeBebe = $_POST['nomeBebe'];
         $nicknameBebe1 = $_POST['nicknameBebe'];
@@ -43,7 +34,7 @@
       sweetAlert('Campos Vazios', 'Preencha os campos vazios...', 'error');
           </script>";
         }else{
-          if (alterarDadosBebe($nomeBebe,$nicknameBebe1,$fotoBebe,$sexoBebe,$nascimentoBebe,$nicknameBebe)) {
+          if (alterarDadosBebe($nomeBebe,$nicknameBebe1,$fotoBebe,$sexoBebe,$nascimentoBebe,$nicknameBebe,$emailUser)) {
             echo "<script>
       sweetAlert('Sucesso na alteração de dados do bebê', 'Alteração feita com sucesso!', 'success');
       setTimeout(function() { location.href='principal.php' }, 2000);
@@ -85,29 +76,44 @@
     <div class="contanier">
     </br>
       <div class="row">
-          <form class="col s12" action="editarBebe.php" method="post"  enctype="multipart/form-data">
+      <?php
+        $resultado1 = mysqli_fetch_assoc($resultado);
+      ?>
+          <form class="col s12" action="editarBebe.php?nickname=<?php echo $nicknameBebe ?>" method="post"  enctype="multipart/form-data">
             <div class="row">
               <div class="input-field col s6">
-                <input name="nomeBebe" id="nomeBebe" value="<?php echo '$nome' ?>" type="text" class="validate" required>
+                <input name="nomeBebe" id="nomeBebe" value="<?php echo $resultado1['Nome'] ?>" type="text" class="validate" required>
                 <label for="first_name">Nome do Bebê</label>
               </div>
               <div class="input-field col s6">
-                <input name="nicknameBebe" id="nickname" type="text" value="<?php echo '$nickname' ?>" class="validate" required>
+                <input name="nicknameBebe" id="nickname" type="text" value="<?php echo $resultado1['Nickname'] ?>" class="validate" required>
                 <label for="nickname">Nickname do Bebê</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
                 <label for="nascimentoBebe">Data de nascimento</label>
-                <input name="nascimentoBebe" id="nascimentoBebe" type="text" value="<?php echo '$nascimento' ?>" class="datepicker">
+                <input name="nascimentoBebe" id="nascimentoBebe" type="text" value="<?php echo $resultado1['Nascimento'] ?>" class="datepicker">
               </div>
-              <div class="input-field col s6">
-                <select name="sexoBebe" required>
-                  <option value="Masculino">Masculino</option>
-                  <option value="Feminino">Feminino</option>
-                </select>
-                <label>Sexo</label>
-              </div>
+              <?php 
+                if ($resultado1["Sexo"]=="Masculino") {
+                  echo '<div class="input-field col s6">
+                   <select name="sexoBebe" required>
+                      <option value="Masculino" selected>Masculino</option>
+                      <option value="Feminino">Feminino</option>
+                    </select>
+                    <label>Sexo</label>
+                  </div>';
+                }else{
+                  echo '<div class="input-field col s6">
+                   <select name="sexoBebe" required>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Feminino" selected>Feminino</option>
+                    </select>
+                    <label>Sexo</label>
+                  </div>';
+                }
+              ?>
             </div>
             <div class="row">
               <div class="file-field input-field col s12">
@@ -116,7 +122,7 @@
                   <input type="file" name="fotoBebe">
                 </div>
                 <div class="file-path-wrapper">
-                  <input  name="fotoBebe" class="file-path validate" value="<?php echo '$foto' ?>" type="text">
+                  <input  name="fotoBebe" class="file-path validate" value="<?php echo $resultado1['Foto'] ?>" type="text">
                 </div>
               </div>
             </div>

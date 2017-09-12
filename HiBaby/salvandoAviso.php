@@ -47,16 +47,57 @@ $nickBebe = $_REQUEST['nickBebe'];
       </nav>
     </div>
 
+<<<<<<< HEAD
+=======
+    <!-- Formulário de inscrição -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Cadastro de avisos</h4>
+        <form action="cadastroAviso" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="nomeBebe" type="text" name="nomeBebe">
+              <label for="Descricao">Descricao</label>
+            </div>
+          </div>
+          <div class="row">
+          <div class="input-field col s6">
+              <textarea for="aviso"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <label for="data">Data</label>
+              <input name="data" id="data" type="text" class="datepicker">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" value="Salvar">
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+>>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
 
     <?php
           $conn = mysqli_connect('localhost', 'root', '', 'hibaby');
 
           $des = $_POST['Descricao'];
           $aviso = $_POST['Aviso'];
+<<<<<<< HEAD
 
           $sql ="INSERT INTO recado (NicknameBebe, Data, Hora, Descricao, Aviso) values ('$nickBebe', CURRENT_DATE(),CURRENT_TIME(), '$des', '$aviso')";
           $result = mysqli_query( $conn, $sql);
           if($result)
+=======
+          $data = $_POST['Data'];
+
+          $sql ="INSERT INTO recado (NicknameBebe, Data, Hora, Descricao, Aviso) values ('$nickBebe', '$data', 'NOW()', '$des', '$aviso')";
+          $result = mysqli_query( $conn, $sql);
+          if(!$result)
+>>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
             echo "<script>
           sweetAlert('Cadastro', 'O aviso foi salvo com sucesso', 'success');
           setTimeout(function() { location.href='principal.php' }, 3000);

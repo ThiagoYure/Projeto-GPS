@@ -1,6 +1,5 @@
 <?php
 function alterarDadosBebe($nome,$nickname,$foto,$sexo,$nascimento,$nicknameBebe,$emailUser){
-  include("conexao.php");
   $conexao = open_database();
   if($conexao != null){
     if ($nickname==$nicknameBebe) {
@@ -17,7 +16,7 @@ function alterarDadosBebe($nome,$nickname,$foto,$sexo,$nascimento,$nicknameBebe,
       }
       mysqli_close($conexao);
     }else{
-      $sql2 = "SELECT * FROM usuario_bebe WHERE email='$emailUser' AND nicknameBebe='$nickname'"
+      $sql2 = "SELECT * FROM usuario_bebe WHERE email='$emailUser' AND nicknameBebe='$nickname'";
       if (mysqli_query($conexao,$sql2)) {
         $result = mysqli_query($conexao,$sql2);
         $numRows = mysqli_num_rows($result);

@@ -20,6 +20,10 @@ CREATE TABLE Recado(
 	ID SERIAL,
 	NicknameBebe VARCHAR(100),
 	Data DATE NOT NULL,
+<<<<<<< HEAD
+=======
+	Hora TIME NOT NULL,
+>>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
 	Descricao TEXT NOT NULL,
 	Aviso TEXT NOT NULL,
 	CONSTRAINT RecadoPK1 PRIMARY KEY(ID),
