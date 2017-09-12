@@ -57,9 +57,8 @@
 			</div>
 		</div>
 		<div class="fixed-action-btn">
-			<a class="btn-floating btn-large red" id="done">
-				<input type="submit" value="done" name="done" class="large material-icons">
-			</a>
+				<button type="submit" name="done" class="btn-floating btn-large red large material-icons">
+				<i class="large material-icons">add</i></button>
 		</div>
 		</form>
 		</div>
