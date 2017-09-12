@@ -54,7 +54,11 @@ $id = $_GET['id'];
     $result = mysqli_query( $conn, $sql);
 
     // Verifica se o comando foi executado com sucesso
+<<<<<<< HEAD
+    if($result){
+=======
     if(!$result){
+>>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
       echo "<script>
       sweetAlert('Sucesso', 'Aviso excluido com sucesso', 'success');
       setTimeout(function() { location.href='principal.php' }, 3000);

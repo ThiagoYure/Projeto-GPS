@@ -47,6 +47,8 @@ $nickBebe = $_REQUEST['nickBebe'];
       </nav>
     </div>
 
+<<<<<<< HEAD
+=======
     <!-- Formulário de inscrição -->
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -77,17 +79,25 @@ $nickBebe = $_REQUEST['nickBebe'];
     </div>
 
 
+>>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
 
     <?php
           $conn = mysqli_connect('localhost', 'root', '', 'hibaby');
 
           $des = $_POST['Descricao'];
           $aviso = $_POST['Aviso'];
+<<<<<<< HEAD
+
+          $sql ="INSERT INTO recado (NicknameBebe, Data, Hora, Descricao, Aviso) values ('$nickBebe', CURRENT_DATE(),CURRENT_TIME(), '$des', '$aviso')";
+          $result = mysqli_query( $conn, $sql);
+          if($result)
+=======
           $data = $_POST['Data'];
 
           $sql ="INSERT INTO recado (NicknameBebe, Data, Hora, Descricao, Aviso) values ('$nickBebe', '$data', 'NOW()', '$des', '$aviso')";
           $result = mysqli_query( $conn, $sql);
           if(!$result)
+>>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
             echo "<script>
           sweetAlert('Cadastro', 'O aviso foi salvo com sucesso', 'success');
           setTimeout(function() { location.href='principal.php' }, 3000);

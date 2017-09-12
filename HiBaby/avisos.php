@@ -64,12 +64,15 @@ $nickBebe = $_REQUEST['nickBebe'];
               <label for="Aviso">Aviso</label>
             </div>
           </div>
+<<<<<<< HEAD
+=======
           <div class="row">
             <div class="input-field col s6">
               <label for="data">Data</label>
               <input name="Data" id="data" type="text" class="datepicker">
             </div>
           </div>
+>>>>>>> 2769f909bbc64441abe974854c52c05736eb49fe
           <div class="modal-footer">
             <input class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" value="Salvar">
           </div>
