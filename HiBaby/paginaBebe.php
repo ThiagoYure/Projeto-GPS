@@ -50,6 +50,7 @@
       <div class="collection">
         <a href="albuns.php?nickBebe=<?php echo $nickBebe?>" class="collection-item"><h4>Álbuns</h4></a>
         <a href="#!" class="collection-item"><h4>Estoque</h4></a>
+        <a href='avisos.php?nickBebe=<?php echo $nickBebe?>' class="collection-item"><h4>Avisos</h4></a>
       </div>
       
     </div>
