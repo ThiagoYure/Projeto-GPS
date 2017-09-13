@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,13 +7,12 @@
   </head>
   <body>
 	<?php
-		session_start();
 		if(empty($_SESSION['email']) and empty($_SESSION['senha'])){
 			echo "<script>
 		        sweetAlert('Você não logou', 'Por favor entre no sistema', 'error');
 		        setTimeout(function() { location.href='index.php' }, 3000); </script>";
 			session_unset();
-			exit;
+                        exit;
 		}
 	?>
   </body>

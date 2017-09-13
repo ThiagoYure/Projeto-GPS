@@ -1,5 +1,6 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
-	function buscaEstoque($nickBebe){
+	function buscaEstoque($nickbebe){
 		$conexao = open_database();
 		if($conexao != null){
 			$sql = "select id,nome,quantidade from produto where nicknamebebe='$nickbebe'";
@@ -18,14 +19,12 @@
 		}
 	}
 ?>
-<?php
-	session_start();
-?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<!--Import Google Icon Font-->
-		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
 		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
@@ -84,13 +83,13 @@
 									<i class="material-icons circle">folder</i>
 									<span class="title">'.$result[$i]['nome'].'</span>
 									<p>'.$result[$i]['quantidade'].'</p>
-									<a class="btn-floating red" href="produtoacrecimo.php?id='.$result[$i]['ID'].'&nickBebe='.$_GET['nickBebe'].'">
+									<a class="btn-floating red" href="produtoacrecimo.php?id='.$result[$i]['id'].'&nickBebe='.$_GET['nickBebe'].'">
 										<i class="large material-icons">add</i>
 									</a>
-									<a class="btn-floating red" href="produtodiminuir.php?id='.$result[$i]['ID'].'&nickBebe='.$_GET['nickBebe'].'">
+									<a class="btn-floating red" href="produtodiminuir.php?id='.$result[$i]['id'].'&nickBebe='.$_GET['nickBebe'].'">
 										<i class="large material-icons">remove</i>
 									</a>
-									<a class="btn-floating red" href="excluindoProduto.php?id='.$result[$i]['ID'].'&nickBebe='.$_GET['nickBebe'].'">
+									<a class="btn-floating red" href="excluindoProduto.php?id='.$result[$i]['id'].'&nickBebe='.$_GET['nickBebe'].'">
 										<i class="large material-icons">delete_forever</i>
 									</a>
 								</li>

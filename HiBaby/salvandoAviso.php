@@ -1,6 +1,6 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
 include("crudMySql.php");
-session_start();
 $nickBebe = $_REQUEST['nickBebe'];
 ?>
 <!DOCTYPE html>
@@ -82,7 +82,7 @@ $nickBebe = $_REQUEST['nickBebe'];
           $des = $_POST['Descricao'];
           $aviso = $_POST['Aviso'];
 
-          $sql ="insert into recado (nicknamebebe, data, hora, descricao, aviso) values ('$nickbebe', current_date(),current_time(), '$des', '$aviso')";
+          $sql ="insert into recado (nicknamebebe, data, hora, descricao, aviso) values ('$nickBebe', current_date(),current_time(), '$des', '$aviso')";
           if(mysqli_query($conn, $sql)){
 				echo "<script>
           sweetAlert('Cadastro', 'O aviso foi salvo com sucesso', 'success');
@@ -106,5 +106,3 @@ $nickBebe = $_REQUEST['nickBebe'];
 
   </body>
   </html>
-
-

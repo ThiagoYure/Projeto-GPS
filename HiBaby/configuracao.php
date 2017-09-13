@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,7 +15,6 @@
 
   <body>
     <?php 
-      include("bloqueiaAcessoDiretoURL.php");
       include("uploadFile.php");
       include("funcaoAlterarInfo.php");
       $email = $_SESSION['email'];
@@ -33,8 +33,6 @@
           </script>";
         }else{
           if (alterarDados($nome1,$email1,$foto1,$cor,$senha1,$email)) {
-            session_destroy();
-            session_start();
             $_SESSION['email'] = $email1;
             $_SESSION['foto'] = $foto1;
             $_SESSION['cor'] = $cor;
@@ -66,7 +64,6 @@
         <a href="configuracao.php"><span class="white-text name"><?php $nome = $_SESSION['nome']; echo "$nome"; ?></span></a>
         <a href="configuracao.php"><span class="white-text email"><?php $email = $_SESSION['email']; echo "$email"; ?></span></a>
       </div></li>
-      <li><a class="modal-trigger" href="#modal1"><i class="material-icons">edit</i>Cadastro de Criança</a></li>
       <li><a href="configuracao.php"><i class="material-icons">settings</i>Configurações</a></li>
       <li><a href="logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
@@ -78,7 +75,7 @@
         </div>
       </nav>
     </div>
-    <div class="contanier">
+    <div class="container">
     </br>
       <div class="row">
           <form class="col s12" action="configuracao.php" method="post"  enctype="multipart/form-data">
@@ -105,7 +102,7 @@
                   <input name="foto" type="file">
                 </div>
                 <div class="file-path-wrapper">
-                  <input class="file-path validate" value="<?php echo "$foto" ?>" type="text">
+                  <input placeholder="Foto(obrigatório)" class="file-path validate" type="text">
                 </div>
               </div>
             </div>

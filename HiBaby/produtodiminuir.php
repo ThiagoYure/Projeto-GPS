@@ -1,6 +1,6 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
 include("crudMySql.php");
-session_start();
 $id = $_GET['id'];
 $bebe = $_GET['nickBebe'];
 ?>
@@ -8,7 +8,7 @@ $bebe = $_GET['nickBebe'];
 <html>
 	<head>
 		<!--Import Google Icon Font-->
-		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
 		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 

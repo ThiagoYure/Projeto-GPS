@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,7 +7,7 @@
   </head>
   <body>
   	<?php
-      session_start();
+
       echo "<script>setTimeout(function() { location.href='index.php' }, 50);</script>";
       session_destroy();
   	?>

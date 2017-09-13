@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
 	include("conexao.php");
 	

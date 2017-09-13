@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,7 +12,7 @@
     include("conexao.php");
     $quantidade = $_POST['quantidade'];
 	
-	session_start();
+
 		
 	$idbebe = $_GET['id'];
 	$bebe = $_GET['nickBebe'];

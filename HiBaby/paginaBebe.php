@@ -1,5 +1,5 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
-	session_start();
 	$nickBebe = $_REQUEST['nickname'];
 ?>
 <!DOCTYPE html>
@@ -67,5 +67,3 @@
 	
   </body>
 </html>
-
-	

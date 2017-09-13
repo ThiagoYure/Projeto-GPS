@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
   function fotoSalva($fotoFile, $email)
   {

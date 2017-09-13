@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,7 +13,7 @@
     $nome = $_POST['last_name'];
     $quantidade = $_POST['icon_telephone'];
 	
-	session_start();
+
 	$usuariobebe = $_GET['bebe'];
 	
 	$existe = existe($nome, $usuariobebe);
@@ -20,12 +21,12 @@
 	if($quantidade == "" || $nome == ""){
 		echo "<script>
       sweetAlert('Falha no cadastro', 'Dados vazios', 'error');
-      setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 1000);
+      setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 1500);
           </script>";
-	}else if($existe == false){
+	}else if($existe == true){
 		echo "<script>
-      sweetAlert('Falha no cadastro', 'Não foi possível cadastrar ja existe esse produto', 'error');
-      setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 1000);
+      sweetAlert('Falha no cadastro', 'Não foi possível cadastrar, esse produto já existe', 'error');
+      setTimeout(function() { location.href ='estoque.php?nickBebe=$usuariobebe'; }, 1500);
           </script>";
 	}else{ 
 		$ok = cadastroproduto($nome, $quantidade, $usuariobebe);
@@ -46,23 +47,18 @@
 		
 		$conexao = open_database();
 		if($conexao != null){
-			
 			$sql = " SELECT nome FROM produto WHERE nome='$nome' AND nicknamebebe='$usuariobebe'";
 			$result = mysqli_query($conexao, $sql);
-			if($result){
-				if(mysqli_num_rows($result)==0){
-					$resultado = false;
+				if(mysqli_num_rows($result)>0){
+                                   return true;
 				}else{
-					$resultado = true;
+					return false;
 				}
-			}else{
-				$resultado = false;
-			}
 			mysqli_close($conexao);
 		}else{
-			$resultado = false;
+			return false;
 		}
-		return $resultado;
+		
 	}
 	
 	function cadastroproduto($nome,$quantidade,$usuariobebe){

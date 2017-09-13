@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,7 +15,6 @@
 
   <body>
     <?php 
-      include("bloqueiaAcessoDiretoURL.php");
       include("conexao.php");
       include("uploadFile.php");
       include("funcaoAlterInfoBebe.php");
@@ -82,21 +82,21 @@
           <form class="col s12" action="editarBebe.php?nickname=<?php echo $nicknameBebe ?>" method="post"  enctype="multipart/form-data">
             <div class="row">
               <div class="input-field col s6">
-                <input name="nomeBebe" id="nomeBebe" value="<?php echo $resultado1['Nome'] ?>" type="text" class="validate" required>
+                <input name="nomeBebe" id="nomeBebe" value="<?php echo $resultado1['nome'] ?>" type="text" class="validate" required>
                 <label for="first_name">Nome do Bebê</label>
               </div>
               <div class="input-field col s6">
-                <input name="nicknameBebe" id="nickname" type="text" value="<?php echo $resultado1['Nickname'] ?>" class="validate" required>
+                <input name="nicknameBebe" id="nickname" type="text" value="<?php echo $resultado1['nickname'] ?>" class="validate" required>
                 <label for="nickname">Nickname do Bebê</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
                 <label for="nascimentoBebe">Data de nascimento</label>
-                <input name="nascimentoBebe" id="nascimentoBebe" type="text" value="<?php echo $resultado1['Nascimento'] ?>" class="datepicker">
+                <input name="nascimentoBebe" id="nascimentoBebe" type="text" value="<?php echo $resultado1['nascimento'] ?>" class="datepicker">
               </div>
               <?php 
-                if ($resultado1["Sexo"]=="Masculino") {
+                if ($resultado1["sexo"]=="Masculino") {
                   echo '<div class="input-field col s6">
                    <select name="sexoBebe" required>
                       <option value="Masculino" selected>Masculino</option>
@@ -122,7 +122,7 @@
                   <input type="file" name="fotoBebe">
                 </div>
                 <div class="file-path-wrapper">
-                  <input  name="fotoBebe" class="file-path validate" value="<?php echo $resultado1['Foto'] ?>" type="text">
+                  <input placeholder="Foto (obrigatório)" name="fotoBebe" class="file-path validate" type="text">
                 </div>
               </div>
             </div>

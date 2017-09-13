@@ -1,6 +1,6 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
 include("crudMySql.php");
-session_start();
 $id = $_GET['id'];
 $nickBebe = $_GET['nickBebe'];
 ?>
@@ -77,5 +77,3 @@ mysqli_close($conn);
 
 </body>
 </html>
-
-

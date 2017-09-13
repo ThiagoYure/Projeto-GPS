@@ -1,3 +1,5 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,7 +16,6 @@
 
   <body>
     <?php 
-      include("bloqueiaAcessoDiretoURL.php");
       include("conexao.php");
       $conexao = open_database();
       $email = $_SESSION["email"];
@@ -37,7 +38,7 @@
         <a href="configuracao.php"><span class="white-text name"><?php $nome = $_SESSION['nome']; echo "$nome"; ?></span></a>
         <a href="configuracao.php"><span class="white-text email"><?php $email = $_SESSION['email']; echo "$email"; ?></span></a>
       </div></li>
-      <li><a class="modal-trigger" href="#modal1"><i class="material-icons">edit</i>Cadastro de Criança</a></li>
+
       <li><a href="configuracao.php"><i class="material-icons">settings</i>Configurações</a></li>
       <li><a href="logout.php"><i class="material-icons">power_settings_new</i>Logout</a></li>
     </ul>
@@ -52,7 +53,7 @@
     <div class="contanier">
       <div class="container">
         <div class="container">
-
+<h4>Seus bebês</h4>
 			<?php 
 			  while($exibe = mysqli_fetch_assoc($result)){
 				echo 
@@ -82,7 +83,7 @@
     <div id="modal1" class="modal">
       <div class="modal-content">
         <h4>Cadastro de criança</h4>
-        <form action="cadastroBebe" method="post" enctype="multipart/form-data">
+        <form action="cadastroBebe.php" method="post" enctype="multipart/form-data">
           <div class="row">
             <div class="input-field col s6">
               <input id="nomeBebe" type="text" name="nomeBebe">
@@ -134,5 +135,3 @@
 	
   </body>
 </html>
-
-	

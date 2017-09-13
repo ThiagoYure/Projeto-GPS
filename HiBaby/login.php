@@ -1,3 +1,4 @@
+<?php 	session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +8,6 @@
   <body>
 
 	<?php
-		session_start();
 
 		include("crudMySql.php");
 
@@ -21,11 +21,11 @@
 
 				$result = read_database('usuario', "where email = '$email'");
 
-				$_SESSION['cor'] = $result[0]['Cor'];
+				$_SESSION['cor'] = $result[0]['cor'];
 
-				$_SESSION['foto'] = $result[0]['Foto'];
+				$_SESSION['foto'] = $result[0]['foto'];
 
-				if($result[0]['Senha'] <> $senha){
+				if($result[0]['senha'] <> $senha){
 					echo "<script>
 		        	sweetAlert('Senha incorreta', 'Digite novamente a senha', 'error');
 		        	setTimeout(function() { window.history.back(); }, 5000); </script>";

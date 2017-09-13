@@ -1,7 +1,6 @@
 <?php
 	
 	include("crudAlbum.php");
-	session_start();
 	$nomeAlbum = $_REQUEST['album'];
 	$bebe = $_REQUEST['bebe'];
 	

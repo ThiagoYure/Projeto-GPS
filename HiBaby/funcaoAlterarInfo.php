@@ -1,9 +1,9 @@
 <?php
-function alterarDados($nome,$email,$foto,$cor,$senha,$emailAntigo){
+function alterarDados($nome,$email,$foto,$cor,$senha,$emailantigo){
   include("conexao.php");
   $conexao = open_database();
   if($conexao != null){
-    if ($email==$emailAntigo) {
+    if ($email==$emailantigo) {
       $sql1 = "update usuario set email='$email',nome='$nome',foto='$foto',senha='$senha',cor='$cor' where email='$emailantigo'";
 
       if(mysqli_query($conexao, $sql1)){

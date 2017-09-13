@@ -1,7 +1,5 @@
 <?php
-
   include("crudAlbum.php");
-  session_start();
   $bebe = $_REQUEST['nickBebe'];
   if($_POST){
     $nome = $_POST['nomeAlbum'];

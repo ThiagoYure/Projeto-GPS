@@ -1,3 +1,4 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,7 +24,7 @@
 		$fotoBebe = uploadPhoto($_FILES['fotoBebe'], 'BabyPhotos/'.$nicknameBebe);
 		
 		//Starta a sessão
-		session_start();
+
 		
 		$usuarioResponsavel = $_SESSION['email'];
 		

@@ -1,8 +1,8 @@
 <?php
-function alterarDadosBebe($nome,$nickname,$foto,$sexo,$nascimento,$nicknameBebe,$emailUser){
+function alterarDadosBebe($nome,$nickname,$foto,$sexo,$nascimento,$nicknamebebe,$emailuser){
   $conexao = open_database();
   if($conexao != null){
-    if ($nickname==$nicknameBebe) {
+    if ($nickname==$nicknamebebe) {
       $sql1 = "update bebe set nome='$nome',nickname='$nickname',foto='$foto',sexo='$sexo',nascimento='$nascimento' where nickname='$nicknamebebe'";
 
       if(mysqli_query($conexao, $sql1)){

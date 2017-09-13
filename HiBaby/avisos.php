@@ -1,6 +1,6 @@
+<?php  include("bloqueiaAcessoDiretoURL.php"); ?>
 <?php
 include("crudMySql.php");
-session_start();
 $nickBebe = $_REQUEST['nickBebe'];
 ?>
 <!DOCTYPE html>
@@ -98,12 +98,12 @@ $nickBebe = $_REQUEST['nickBebe'];
         
 			
           <div class="collection"> 
-            <p align="left"><?php echo $aviso['Data']; ?></p>
-            <p align="left"><?php echo $aviso['Hora']; ?></p>
-            <h4 align="center"><?php echo $aviso['Aviso']; ?></h4>
-            <p align="center"><?php echo $aviso['Descricao']; ?></p>
+            <p align="left"><?php echo $aviso['data']; ?></p>
+            <p align="left"><?php echo $aviso['hora']; ?></p>
+            <h4 align="center"><?php echo $aviso['aviso']; ?></h4>
+            <p align="center"><?php echo $aviso['descricao']; ?></p>
             <div align="right">
-             <a class='btn-floating btn-tiny red' href='excluindoAviso.php?nickBebe=<?php echo $nickBebe ?>&id=<?=$aviso['ID']?>'><i class='tiny material-icons'>delete</i></a>  
+             <a class='btn-floating btn-tiny red' href='excluindoAviso.php?nickBebe=<?php echo $nickBebe ?>&id=<?=$aviso['id']?>'><i class='tiny material-icons'>delete</i></a>  
            </div>
          </div>
 
@@ -126,5 +126,3 @@ $nickBebe = $_REQUEST['nickBebe'];
 
 </body>
 </html>
-
-
