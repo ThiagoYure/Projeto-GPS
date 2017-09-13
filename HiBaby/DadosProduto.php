@@ -47,7 +47,7 @@
 		$conexao = open_database();
 		if($conexao != null){
 			
-			$sql = " SELECT nome FROM produto WHERE nome='$nome' AND NicknameBebe='$usuariobebe'";
+			$sql = " SELECT nome FROM produto WHERE nome='$nome' AND nicknamebebe='$usuariobebe'";
 			$result = mysqli_query($conexao, $sql);
 			if($result){
 				if(mysqli_num_rows($result)==0){
@@ -69,7 +69,7 @@
 		
     $conexao = open_database();
     if($conexao != null){
-      $sql = "INSERT INTO produto (nome, quantidade, Nicknamebebe) VALUES ('$nome','$quantidade','$usuariobebe')";
+      $sql = "INSERT INTO produto (nome, quantidade, nicknamebebe) VALUES ('$nome','$quantidade','$usuariobebe')";
       if(mysqli_query($conexao, $sql)){
         $resultado = true;
       }else{

@@ -14,13 +14,13 @@ $bebe = $_GET['nickBebe'];
   </body>
 </html>
 <?php
-    $conn = mysqli_connect('localhost', 'root', '', 'hibaby');
-    $sql = "DELETE from produto where ID='$id'";
+    $conn = mysqli_connect('localhost', 'id2889629_hibaby', 'hibaby', 'id2889629_hibaby');
+    $sql = "DELETE from produto where id='$id'";
     $result = mysqli_query( $conn, $sql);
     // Verifica se o comando foi executado com sucesso
     if($result){
       echo "<script>
-      sweetAlert('Sucesso', 'Produto excluido com sucesso', 'success');
+      sweetAlert('Sucesso', 'Produto excluído com sucesso', 'success');
       setTimeout(function() { location.href ='estoque.php?nickBebe=$bebe'; }, 1000);
           </script>";
 	}else{

@@ -88,7 +88,7 @@ $nickBebe = $_REQUEST['nickBebe'];
 	
     
     <?php
-    $conn = mysqli_connect('localhost', 'root', '', 'hibaby');
+    $conn = mysqli_connect('localhost', 'id2889629_hibaby', 'hibaby', 'id2889629_hibaby');
 
     $avisos = $conn->query("SELECT * from recado order by id desc");
     if(mysqli_affected_rows($conn) > 0){
@@ -114,7 +114,7 @@ $nickBebe = $_REQUEST['nickBebe'];
      $avisos->free(); 
    }
    else{
-    echo "<h4 align='center' class='sem_registros'>Vazio!</h4>";
+    echo "<h4 align='center' class='sem_registros'>Sem avisos</h4>";
   }
 
   ?>

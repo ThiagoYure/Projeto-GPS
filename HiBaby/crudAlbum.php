@@ -21,7 +21,7 @@
 	function buscaAlbuns($nickBebe){
 		$conexao = open_database();
 		if($conexao != null){
-			$sql = "SELECT nome FROM album WHERE nicknameBebe='$nickBebe'";
+			$sql = "SELECT nome FROM album WHERE nicknamebebe='$nickBebe'";
 			$result = mysqli_query($conexao, $sql);
 			if(mysqli_num_rows($result)>0){
 				$array = array();
@@ -43,7 +43,7 @@
         		$caminhoSalvar = "albuns/".$nickBebe."/".$nomeAlbum."/"; //Diretório para uploads
         		move_uploaded_file($foto['tmp_name'], $caminhoSalvar.$foto['name']); //Fazer upload do arquivo
 				$caminhoFoto = $caminhoSalvar.$foto['name'];
-				$sql = "INSERT INTO foto (nicknameBebe, nomeAlbum, url) VALUES ('$nickBebe','$nomeAlbum','$caminhoFoto')";
+				$sql = "INSERT INTO foto (nicknamebebe, nomealbum, url) VALUES ('$nickBebe','$nomeAlbum','$caminhoFoto')";
 				if(mysqli_query($conexao, $sql)){
 					return true;
 				}else{
@@ -58,7 +58,7 @@
 	function buscaFotosAlbum($nickBebe, $nomeAlbum){
 		$conexao = open_database();
 		if($conexao != null){
-			$sql = "SELECT url FROM foto WHERE nicknameBebe='$nickBebe' AND nomeAlbum='$nomeAlbum'";
+			$sql = "SELECT url FROM foto WHERE nicknamebebe='$nickBebe' AND nomealbum='$nomeAlbum'";
 			$result = mysqli_query($conexao, $sql);
 			if(mysqli_num_rows($result)>0){
 				$array = array();
@@ -76,7 +76,7 @@
 	function buscaFotoCapa($nickBebe, $nomeAlbum){
 		$conexao = open_database();
 		if($conexao != null){
-			$sql = "SELECT url FROM foto WHERE nicknameBebe='$nickBebe' AND nomeAlbum='$nomeAlbum' ORDER BY id DESC LIMIT 1";
+			$sql = "SELECT url FROM foto WHERE nicknamebebe='$nickBebe' AND nomealbum='$nomeAlbum' ORDER BY id DESC LIMIT 1";
 			$result = mysqli_query($conexao, $sql);
 			if(mysqli_num_rows($result)>0){
 				while($row = mysqli_fetch_assoc($result)) {

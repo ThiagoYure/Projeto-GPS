@@ -6,7 +6,7 @@
 		try {
 
 			//Recebe parâmetros para conexão com o banco
-			$conn = mysqli_connect('localhost', 'root', '', 'hibaby');
+			$conn = mysqli_connect('localhost', 'id2889629_hibaby', 'hibaby', 'id2889629_hibaby');
 			//Retorna a conexão
 			return $conn;
 

@@ -21,7 +21,7 @@
       $conexao = open_database();
       $emailUser = $_SESSION["email"];
       $nicknameBebe = $_GET["nickname"];
-      $sqli = "SELECT * FROM bebe B,usuario_bebe UB WHERE UB.nicknameBebe=B.nickname AND UB.email='$emailUser' AND B.nickname='$nicknameBebe'";
+      $sqli = "SELECT * FROM bebe b,usuario_bebe ub WHERE ub.nicknamebebe=b.nickname AND ub.email='$emailUser' AND b.nickname='$nicknameBebe'";
       $resultado=mysqli_query($conexao,$sqli);
       if ($_POST) {
         $nomeBebe = $_POST['nomeBebe'];
@@ -73,7 +73,7 @@
         </div>
       </nav>
     </div>
-    <div class="contanier">
+    <div class="container">
     </br>
       <div class="row">
       <?php

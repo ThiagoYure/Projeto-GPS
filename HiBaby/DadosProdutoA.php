@@ -42,7 +42,7 @@
 	function updatequantidade($quantidadefinal, $idbebe){
 		$conexao = open_database();
 		if($conexao != null){
-			$sql = "UPDATE produto SET quantidade = '$quantidadefinal' WHERE ID='$idbebe'";
+			$sql = "UPDATE produto SET quantidade = '$quantidadefinal' WHERE id='$idbebe'";
 			if(mysqli_query($conexao, $sql)){
 				return true;
 			}else{
@@ -57,7 +57,7 @@
 	function buscarquantidade($idbebe){
 		$conexao = open_database();
 		if($conexao != null){
-			$sql = "SELECT quantidade FROM produto WHERE ID='$idbebe'";
+			$sql = "SELECT quantidade FROM produto WHERE id='$idbebe'";
 			$result = mysqli_query($conexao, $sql);
 			if(mysqli_num_rows($result)>0){
 				while($row = mysqli_fetch_assoc($result)) {
