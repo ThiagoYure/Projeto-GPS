@@ -15,11 +15,11 @@
 		$senha = $_POST['senha'];
 
 		if(!empty($email) and !empty($senha)){
-			if(read_database('usuario', "WHERE email = '$email'") != FALSE){
+			if(read_database('usuario', "where email = '$email'") != FALSE){
 				$_SESSION['email'] = $email;
 				$_SESSION['senha'] = $senha;
 
-				$result = read_database('usuario', "WHERE email = '$email'");
+				$result = read_database('usuario', "where email = '$email'");
 
 				$_SESSION['cor'] = $result[0]['Cor'];
 

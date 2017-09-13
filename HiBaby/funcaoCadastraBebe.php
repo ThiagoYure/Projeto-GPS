@@ -29,11 +29,11 @@
 				);
 			
 				$usuario_Bebe = array( 
-					'nicknameBebe' => $nicknameBebe, 
+					'nicknamebebe' => $nicknameBebe, 
 					'email' => $usuarioResponsavel
 				);
 			
-				if(insert_database('Bebe', $bebe) && insert_database('Usuario_Bebe', $usuario_Bebe))
+				if(insert_database('bebe', $bebe) && insert_database('usuario_bebe', $usuario_Bebe))
 					return retorno1;
 				return retorno2;
 				 

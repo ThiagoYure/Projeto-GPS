@@ -51,7 +51,7 @@ $nickBebe = $_GET['nickBebe'];
     <?php
     $conn = mysqli_connect('localhost', 'id2889629_hibaby', 'hibaby', 'id2889629_hibaby');
 
-    $sql = "DELETE from recado where id='$id'";
+    $sql = "delete from recado where id='$id'";
     $result = mysqli_query( $conn, $sql);
 
     // Verifica se o comando foi executado com sucesso

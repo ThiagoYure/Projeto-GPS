@@ -77,12 +77,12 @@ $nickBebe = $_REQUEST['nickBebe'];
     </div>
 
     <?php
-          $conn = mysqli_connect('localhost', 'root', '', 'hibaby');
+          $conn = mysqli_connect('localhost', 'id2889629_hibaby', 'hibaby', 'id2889629_hibaby');
 
           $des = $_POST['Descricao'];
           $aviso = $_POST['Aviso'];
 
-          $sql ="INSERT INTO recado (NicknameBebe, Data, Hora, Descricao, Aviso) values ('$nickBebe', CURRENT_DATE(),CURRENT_TIME(), '$des', '$aviso')";
+          $sql ="insert into recado (nicknamebebe, data, hora, descricao, aviso) values ('$nickbebe', current_date(),current_time(), '$des', '$aviso')";
           if(mysqli_query($conn, $sql)){
 				echo "<script>
           sweetAlert('Cadastro', 'O aviso foi salvo com sucesso', 'success');

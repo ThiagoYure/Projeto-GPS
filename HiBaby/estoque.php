@@ -2,7 +2,7 @@
 	function buscaEstoque($nickBebe){
 		$conexao = open_database();
 		if($conexao != null){
-			$sql = "SELECT id,nome,quantidade FROM produto WHERE nicknamebebe='$nickBebe'";
+			$sql = "select id,nome,quantidade from produto where nicknamebebe='$nickbebe'";
 			$result = mysqli_query($conexao, $sql);
 			if(mysqli_num_rows($result)>0){
 				$array = array();
@@ -25,7 +25,7 @@
 <html>
 	<head>
 		<!--Import Google Icon Font-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
 		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 

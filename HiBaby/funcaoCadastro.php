@@ -4,8 +4,8 @@
     include("crudMySql.php");
     $conexao = open_database();
     if($conexao != null){
-      $sql = "INSERT INTO usuario (email, nome, senha, foto, cor)
-      VALUES ('$email','$nome','$senha','$foto','$cor')";
+      $sql = "insert into usuario (email, nome, senha, foto, cor)
+      values ('$email','$nome','$senha','$foto','$cor')";
 
       if(mysqli_query($conexao, $sql)){
         $resultado = true;

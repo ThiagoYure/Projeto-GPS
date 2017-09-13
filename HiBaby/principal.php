@@ -18,7 +18,7 @@
       include("conexao.php");
       $conexao = open_database();
       $email = $_SESSION["email"];
-      $sql = "SELECT B.nickname,B.nome,B.sexo,B.foto,B.nascimento FROM bebe B,usuario_bebe UB WHERE UB.nicknamebebe=B.nickname AND UB.email='$email'";
+      $sql = "select b.nickname,b.nome,b.sexo,b.foto,b.nascimento from bebe b,usuario_bebe ub where ub.nicknamebebe=b.nickname and ub.email='$email'";
       if (mysqli_query($conexao, $sql)) {
         $result = mysqli_query($conexao, $sql);
       }

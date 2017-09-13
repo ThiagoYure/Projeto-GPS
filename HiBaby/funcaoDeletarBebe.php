@@ -3,7 +3,7 @@
     {
     	include("conexao.php");
     	$conexao = open_database();
-    	$sql = "DELETE FROM bebe WHERE nickname='$nickname'";
+    	$sql = "delete from bebe where nickname='$nickname'";
     	if (mysqli_query($conexao,$sql)) {
     		if (mysqli_affected_rows($conexao)==0||mysqli_affected_rows($conexao)==-1) {
     			return false;
